@@ -53,7 +53,7 @@ Future<List<T>> deserializeFromJson<T>(String filePath, String arrName) async {
     }
   }
 
-  return []; // Return an empty list if the file doesn't exist or has an invalid format
+  return [];
 }
 
 T _fromJson<T>(Map<String, dynamic> json) {
@@ -62,7 +62,7 @@ T _fromJson<T>(Map<String, dynamic> json) {
   } else if (T == ToDo) {
     return ToDo.fromJson(json) as T;
   }
-  // Handle other classes as needed
+
 
   throw Exception('Unsupported type: $T');
 }
