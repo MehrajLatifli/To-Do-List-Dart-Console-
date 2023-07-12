@@ -98,7 +98,8 @@ Future<void> userSinInFunction() async {
         clearConsole();
         print('\n Menu:');
         print('1. Create');
-        print('2. Exit');
+        print('2. View');
+        print('3. Exit');
 
         stdout.write('\n Enter your choice: ');
         var choice = stdin.readLineSync();
@@ -110,6 +111,11 @@ Future<void> userSinInFunction() async {
             break;
 
           case '2':
+
+            await toDoViewFunction();
+            break;
+
+          case '3':
 
             print('Exiting...');
             isRunning = false;
@@ -202,6 +208,47 @@ Future<void> toDoCreateFunction() async {
   }
 
 }
+
+
+Future<void> toDoViewFunction() async {
+
+
+
+  bool todoExists = false;
+
+
+  if (!todoExists) {
+
+
+
+    final viewTodos = await deserializeFromJson< ToDo<String, DateTime> >('./Files/Todo/todos.json','todos');
+
+    String style = '{\n "todos": [      ';
+    print(style);
+
+    for (var i = 0; i < viewTodos.length; i++) {
+
+      var todo = viewTodos[i];
+      if (todo.userId == Get_idUser) {
+        print("\t{");
+        print("\t\tid: ${todo.id}");
+        print("\t\tuserId: ${todo.userId}");
+        print("\t\ttitle: ${todo.title}");
+        print("\t\ttext: ${todo.text}");
+        print("\t\treleaseDate: ${todo.releaseDate}");
+
+        print("\t}${i != viewTodos.length - 1 ? ',' : ''}");
+      }
+    }
+
+
+    String style2 = '  ]\n}';
+    print(style2);
+  }
+
+}
+
+
 
 Future<void> main() async {
 
