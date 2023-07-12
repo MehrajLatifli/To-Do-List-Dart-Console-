@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:io';
 import 'package:uuid/uuid.dart';
 
@@ -112,7 +111,7 @@ Future<void> userSinInFunction() async {
             print('Exiting...');
             isRunning = false;
             exit(0);
-            break;
+
 
           default:
             print('Invalid choice. Please try again.');
@@ -131,13 +130,6 @@ Future<void> userSinInFunction() async {
 }
 
 Future<void> toDoCreateFunction() async {
-  ToDo<String, DateTime> toDo = ToDo(
-    uuid2.v4(),
-    Get_idUser,
-    "Title",
-    "Text",
-    DateTime.now(),
-  );
 
   stdout.write("\n Enter title: ");
   String? title = stdin.readLineSync();
@@ -273,7 +265,6 @@ Future<void> main() async {
         print('Exiting...');
         isRunning = false;
         exit(0);
-        break;
 
       default:
         print('Invalid choice. Please try again.');
