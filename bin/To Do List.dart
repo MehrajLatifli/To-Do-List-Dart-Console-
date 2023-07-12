@@ -35,7 +35,6 @@ void clearConsole() {
   // }
 
   // stdout.write('\n' * 100);
-
 }
 
 
