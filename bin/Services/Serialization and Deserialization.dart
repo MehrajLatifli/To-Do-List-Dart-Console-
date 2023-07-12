@@ -11,11 +11,9 @@ Future<void> serializeToJson<T>(T object, String filePath, String arrName) async
 
   dynamic existingData;
 
-
   if (await file.exists()) {
     final jsonString = await file.readAsString();
     existingData = jsonDecode(jsonString);
-
 
     if (existingData is! Map) {
       throw FormatException('Invalid JSON format');
